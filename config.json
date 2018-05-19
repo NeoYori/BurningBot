@@ -1,0 +1,9 @@
+{
+    "prefix": "!",
+    "token": "NDQ2MzQxNTQ3MzExNjI4MzE5.Dd3pKA.arXGCPZforH0ezbmS_SZwdAa3Bc",
+    "command": {
+        "create": "create",
+        "join": "join",
+        "stop": "stop"
+    }
+}
