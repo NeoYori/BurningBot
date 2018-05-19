@@ -4,6 +4,7 @@
     "command": {
         "create": "create",
         "join": "join",
-        "stop": "stop"
+        "stop": "stop",
+        "leave": "leave"
     }
 }
