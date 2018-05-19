@@ -34,7 +34,8 @@ const main = class Main {
 
     joinParty (type) {
         let message;
-        // let partyPlayer = [];
+        let indexOfPlayer;
+        let newMessage;
         
         bot.on('message', (msg) => {
             if (msg.content === `${config.prefix}${config.command.join}${type}`) {
@@ -42,7 +43,7 @@ const main = class Main {
                 
                 if (this.partyActive && this.activePlayer <= this.maxPlayer) {
                     if (this.partyPlayer[this.partyPlayer.indexOf(this.partyCreator)] === msg.author.username) {
-                        msg.channel.send('QUOI TU VEUX TE RAJOUTER DEUX FOIS ! DAFUQ MAH DEWD !');
+                        msg.channel.send('Vous faites déjà parti du groupe');
                     } else {
                         this.partyPlayer.push(`${msg.author.username}`);
                     }
@@ -66,9 +67,6 @@ const main = class Main {
                 }
                 ++this.activePlayer;
             }
-
-            let indexOfPlayer;
-            let newMessage;
             if (msg.content === `${config.prefix}${config.command.leave}${type}`) {
                 indexOfPlayer = this.partyPlayer.indexOf(`${msg.author.username}`);
                 msg.delete();
@@ -80,7 +78,7 @@ const main = class Main {
                         }
                         msg.channel.send(`${msg.author.username} a quitté(e) le groupe.`);
                     } else {
-                        msg.channel.send('You doesn\'t exist');
+                        msg.channel.send(`Vous ne faites pas partie d'un groupe, tapez " ${config.prefix}${config.command.join}${type} " pour rejoindre le groupe.`);
                     }
                     newMessage = `Player présent dans le groupe ${type} :\n`;
                     for (let player of this.partyPlayer) {
